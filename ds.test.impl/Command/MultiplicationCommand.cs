@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для умножения
+    /// </summary>
     internal class MultiplicationCommand : PluginBase
     {
         public override string PluginName => "Multiplication";

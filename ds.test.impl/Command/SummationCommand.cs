@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для сложения
+    /// </summary>
     internal class SummationCommand : PluginBase
     {
         public override string PluginName => "Summation";

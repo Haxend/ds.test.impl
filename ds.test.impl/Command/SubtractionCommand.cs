@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для вычитания
+    /// </summary>
     internal class SubtractionCommand : PluginBase
     {
         public override string PluginName => "Subtraction";

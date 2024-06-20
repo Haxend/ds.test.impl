@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для возведения в степень
+    /// </summary>
     internal class SqrCommand : PluginBase
     {
         public override string PluginName => "Sqr";

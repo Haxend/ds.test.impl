@@ -3,6 +3,9 @@ using ds.test.impl.Interfaces;
 
 namespace ds.test.impl
 {
+    /// <summary>
+    /// Абстрактный класс для реализации общих методов плагина
+    /// </summary>
     internal abstract class PluginBase : IPlugin
     {
         public abstract string PluginName { get; }

@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для извлечения квадратного корня
+    /// </summary>
     internal class SqrtCommand : PluginBase
     {
         public override string PluginName => "Sqrt";

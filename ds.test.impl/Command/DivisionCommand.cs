@@ -2,6 +2,9 @@
 
 namespace ds.test.impl.Command
 {
+    /// <summary>
+    /// Плагин для деления
+    /// </summary>
     internal class DivisionCommand : PluginBase
     {
         public override string PluginName => "Division";
