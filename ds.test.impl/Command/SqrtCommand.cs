@@ -4,7 +4,7 @@ namespace ds.test.impl.Command
 {
     internal class SqrtCommand : PluginBase
     {
-        public override string PluginName => "Извлечения корня";
+        public override string PluginName => "Sqrt";
         public override string Version => "1.0";
         public override Image? Image => null; // Можно задать иконку плагина
         public override string Description => "Плагин, который вычисляет квадратный корень из введенного числа.";

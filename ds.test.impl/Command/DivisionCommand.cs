@@ -4,7 +4,7 @@ namespace ds.test.impl.Command
 {
     internal class DivisionCommand : PluginBase
     {
-        public override string PluginName => "Деление";
+        public override string PluginName => "Division";
         public override string Version => "1.0";
         public override Image? Image => null; // Можно задать иконку плагина
         public override string Description => "Плагин, деление первого числа на второе.";
