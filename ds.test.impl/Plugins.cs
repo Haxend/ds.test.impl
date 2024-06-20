@@ -28,6 +28,13 @@ namespace ds.test.impl
         public static string[] GetPluginNames => _plugins.Select(p => p.PluginName).ToArray();
 
         // Получаем плагин
-        public static IPlugin GetPlugin(string pluginName) => _plugins.FirstOrDefault(p => p.PluginName.Equals(pluginName, StringComparison.OrdinalIgnoreCase));
+        public static IPlugin GetPlugin(string pluginName)
+        {
+            var plugin = _plugins.FirstOrDefault(p => p.PluginName.Equals(pluginName, StringComparison.OrdinalIgnoreCase));
+
+            if (plugin == null) throw new ArgumentException($"Плагин с именем '{pluginName}' не найден", nameof(pluginName));
+
+            return plugin;
+        }
     }
 }
