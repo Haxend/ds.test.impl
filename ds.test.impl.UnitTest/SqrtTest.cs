@@ -1,12 +1,21 @@
-﻿namespace ds.test.impl.UnitTest
+﻿using ds.test.impl.Interfaces;
+
+namespace ds.test.impl.UnitTest
 {
     public class SqrtTest
     {
+        private readonly IPluginFactory _plugin;
+
+        public SqrtTest()
+        {
+            _plugin = new Plugins();
+        }
+
         [Fact]
         public void Sqrt_Run_ThrowExceptionOnNegativeInput()
         {
             // Arrange
-            var plugin = Plugins.GetPlugin("Sqrt");
+            var plugin = _plugin.GetPlugin("Sqrt");
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => plugin.Run(-25, default));
@@ -17,7 +26,7 @@
         public void Sqrt_Run_ReturnCorrectResult()
         {
             // Arrange
-            var plugin = Plugins.GetPlugin("Sqrt");
+            var plugin = _plugin.GetPlugin("Sqrt");
 
             // Act
             var result = plugin.Run(25, default);

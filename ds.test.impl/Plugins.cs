@@ -4,33 +4,32 @@ using ds.test.impl.Interfaces;
 namespace ds.test.impl
 {
     /// <summary>
-    /// Статический класс для управления плагинами
+    /// Реализует интерфейс и предоставляет методы для управления плагинами и доступа к ним.
     /// </summary>
-    public static class Plugins
+    /// Если класс будет статическим, то наследование от реализация интерфейса будет недоступна
+    public class Plugins : IPluginFactory
     {
-        private static readonly List<IPlugin> _plugins = new List<IPlugin>();
-
-        static Plugins()
+        private readonly List<IPlugin> plugins = new List<IPlugin>
         {
             // Добавление плагинов в коллекцию
-            _plugins.Add(new SummationCommand());
-            _plugins.Add(new SubtractionCommand());
-            _plugins.Add(new DivisionCommand());
-            _plugins.Add(new MultiplicationCommand());
-            _plugins.Add(new SqrCommand());
-            _plugins.Add(new SqrtCommand());
-        }
+            new SummationCommand(),
+            new SubtractionCommand(),
+            new DivisionCommand(),
+            new MultiplicationCommand(),
+            new SqrCommand(),
+            new SqrtCommand()
+        };
 
-        // Считываем кол-во плагинов
-        public static int PluginsCount => _plugins.Count;
+        /// <inheritdoc/>
+        public int PluginsCount => plugins.Count;
 
-        // Ввыводим названия плагинов
-        public static string[] GetPluginNames => _plugins.Select(p => p.PluginName).ToArray();
+        /// <inheritdoc/>
+        public string[] GetPluginNames => plugins.Select(p => p.PluginName).ToArray();
 
-        // Получаем плагин
-        public static IPlugin GetPlugin(string pluginName)
+        /// <inheritdoc/>
+        public IPlugin GetPlugin(string pluginName)
         {
-            var plugin = _plugins.FirstOrDefault(p => p.PluginName.Equals(pluginName, StringComparison.OrdinalIgnoreCase));
+            var plugin = plugins.FirstOrDefault(p => p.PluginName.Equals(pluginName, StringComparison.OrdinalIgnoreCase));
 
             if (plugin == null) throw new ArgumentException($"Плагин с именем '{pluginName}' не найден", nameof(pluginName));
 

@@ -1,12 +1,21 @@
-﻿namespace ds.test.impl.UnitTest
+﻿using ds.test.impl.Interfaces;
+
+namespace ds.test.impl.UnitTest
 {
     public class DivisionTest
     {
+        private readonly IPluginFactory _plugin;
+
+        public DivisionTest()
+        {
+            _plugin = new Plugins();
+        }
+
         [Fact]
         public void Division_Run_ThrowDivideByZeroException()
         {
             // Arrange
-            var plugin = Plugins.GetPlugin("Division");
+            var plugin = _plugin.GetPlugin("Division");
 
             // Act & Assert
             var ex = Assert.Throws<DivideByZeroException>(() => plugin.Run(10, 0));
@@ -17,7 +26,7 @@
         public void Division_Run_ReturnCorrectResult()
         {
             // Arrange
-            var plugin = Plugins.GetPlugin("Division");
+            var plugin = _plugin.GetPlugin("Division");
 
             // Act
             var result = plugin.Run(10, 2);
