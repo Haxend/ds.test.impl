@@ -6,28 +6,29 @@ namespace ds.test.impl
     /// <summary>
     /// Реализует интерфейс и предоставляет методы для управления плагинами и доступа к ним.
     /// </summary>
-    /// Если класс будет статическим, то наследование от реализация интерфейса будет недоступна
-    public class Plugins : IPluginFactory
+    public static class Plugins
     {
-        private readonly List<IPlugin> plugins = new List<IPlugin>
+        private static readonly List<IPlugin> plugins = new List<IPlugin>();
+
+        static Plugins()
         {
             // Добавление плагинов в коллекцию
-            new SummationCommand(),
-            new SubtractionCommand(),
-            new DivisionCommand(),
-            new MultiplicationCommand(),
-            new SqrCommand(),
-            new SqrtCommand()
-        };
+            plugins.Add(new SummationCommand());
+            plugins.Add(new SubtractionCommand());
+            plugins.Add(new DivisionCommand());
+            plugins.Add(new MultiplicationCommand());
+            plugins.Add(new SqrCommand());
+            plugins.Add(new SqrtCommand());
+        }
 
         /// <inheritdoc/>
-        public int PluginsCount => plugins.Count;
+        public static int PluginsCount => plugins.Count;
 
         /// <inheritdoc/>
-        public string[] GetPluginNames => plugins.Select(p => p.PluginName).ToArray();
+        public static string[] GetPluginNames => plugins.Select(p => p.PluginName).ToArray();
 
         /// <inheritdoc/>
-        public IPlugin GetPlugin(string pluginName)
+        public static IPlugin GetPlugin(string pluginName)
         {
             var plugin = plugins.FirstOrDefault(p => p.PluginName.Equals(pluginName, StringComparison.OrdinalIgnoreCase));
 
