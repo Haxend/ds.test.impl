@@ -28,8 +28,8 @@ interface PluginFactory
 В реализации интерфейсов допускается, но не рекомендуется использование сторонних библиотек.
 
 ## Комментарии по выполненному заданию
-1) Статический класс Plugins не может реализовать интерфейс PluginFactory -> поэтому был сделан обычный класс Plugins, а не статический
-   - Можно сделать класс PluginManager, который реализовывал бы интерфейс PluginFactory и обращался бы через Plugins например:
+1) Статический класс Plugins не может реализовать интерфейс PluginFactory -> поэтому был сделан обычный класс Plugins, а не статический (Ветка -> [main](https://github.com/Haxend/ds.test.impl))
+    - Можно сделать класс PluginManager, который реализовывал бы интерфейс PluginFactory и обращался бы через Plugins например:
     ```C#
     public class PluginManager : PluginFactory
     {
@@ -38,4 +38,5 @@ interface PluginFactory
       public IPlugin GetPlugin(string pluginName) => Plugins.GetPlugin(pluginName);
     }
     ```
+    - Вариант чисто по заданию, но без реализации интерфейса (Ветка -> [Version0](https://github.com/Haxend/ds.test.impl/tree/Version0))
 2) Добавил Unit тесты - покрытие не полное (можно до бесконечности различных тестов написать ;) )
