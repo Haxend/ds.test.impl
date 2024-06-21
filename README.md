@@ -6,19 +6,19 @@ Namespace по умолчанию ds.test.impl
 IPlugin и один статический класс Plugins:
 public interface IPlugin
 {
-string PluginName { get; }
-string Version { get; }
-System.Drawing.Image Image { get; }
-string Description { get; }
-int Run (int input1, int input2);
+  string PluginName { get; }
+  string Version { get; }
+  System.Drawing.Image Image { get; }
+  string Description { get; }
+  int Run (int input1, int input2);
 }
 
 Статический класс Plugins должен реализовывать интерфейс:
 interface PluginFactory
 {
-int PluginsCount { get; }
-string[] GetPluginNames { get; }
-IPlugin GetPlugin (string pluginName);
+  int PluginsCount { get; }
+  string[] GetPluginNames { get; }
+  IPlugin GetPlugin (string pluginName);
 }
 
 Часть реализаций интерфейса IPlugin должна быть унаследована от закрытого абстрактного класса/
@@ -29,5 +29,14 @@ IPlugin GetPlugin (string pluginName);
 
 ## Комментарии по выполненному заданию
 1) Статический класс Plugins не может реализовать интерфейс PluginFactory -> поэтому был сделан обычный класс Plugins, а не статический
+   - Можно сделать класс PluginManager, который реализовывал бы интерфейс PluginFactory и обращался бы через Plugins например:
+    ```C#
+    public class PluginManager : PluginFactory
+    {
+      public int PluginsCount => Plugins.PluginsCount;
+      public string[] GetPluginNames => Plugins.GetPluginNames;
+      public IPlugin GetPlugin(string pluginName) => Plugins.GetPlugin(pluginName);
+    }
+    ```
 2) Добавил Unit тесты - покрытие не полное (можно до бесконечности различных тестов написать ;) )
 3) Можно еще добавить Actions для проверок коммитов и упаковку в NuGet
